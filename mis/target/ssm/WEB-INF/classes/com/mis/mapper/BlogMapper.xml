@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mis.mapper.BlogMapper" >
+  <resultMap id="BaseResultMap" type="com.mis.pojo.Blog" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="senderid" property="senderid" jdbcType="VARCHAR" />
+    <result column="reciverid" property="reciverid" jdbcType="VARCHAR" />
+    <result column="sendcontent" property="sendcontent" jdbcType="VARCHAR" />
+    <result column="senddate" property="senddate" jdbcType="DATE" />
+    <result column="picpath" property="picpath" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+  </resultMap>
+
+    <insert id="insert" parameterType="com.mis.pojo.Blog">
+        insert into tblog (id, senderid, reciverid, sendcontent, senddate, picpath,type)
+        values (#{id,jdbcType=VARCHAR}, #{senderid,jdbcType=VARCHAR},#{reciverid,jdbcType=VARCHAR},
+         #{sendcontent,jdbcType=VARCHAR},#{senddate,jdbcType=DATE},#{picpath,jdbcType=VARCHAR},#{type,jdbcType=VARCHAR})
+    </insert>
+
+    <sql id="showBlog">
+        id,senderid, reciverid, sendcontent, senddate, picpath,type
+    </sql>
+    <select id="selectAll" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="showBlog" />
+        from tblog
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+        DELETE from tblog WHERE id = #{id,jdbcType=VARCHAR}
+    </delete>
+
+</mapper>
