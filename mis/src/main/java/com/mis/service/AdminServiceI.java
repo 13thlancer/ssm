@@ -14,4 +14,5 @@ public interface AdminServiceI {
 
     public void DeleteBlogById(String id);
 
+    public void UpdateBlog(String id, String username, String recievername, String sendcontent, String picpath, int sendtype);
 }

@@ -30,4 +30,14 @@
         DELETE from tblog WHERE id = #{id,jdbcType=VARCHAR}
     </delete>
 
+    <update id="updateByPrimaryKey" parameterType="com.mis.pojo.Blog">
+        update tblog set senderid = #{senderid,jdbcType=VARCHAR},
+                          reciverid = #{reciverid,jdbcType=VARCHAR},
+                          sendcontent = #{sendcontent,jdbcType=VARCHAR},
+                          picpath = #{picpath,jdbcType=VARCHAR},
+                          type=#{type,jdbcType=VARCHAR}
+                          where id = #{id,jdbcType=VARCHAR}
+
+    </update>
+
 </mapper>

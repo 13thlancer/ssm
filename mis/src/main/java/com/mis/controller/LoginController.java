@@ -47,14 +47,9 @@ public class LoginController {
         if(!user.getPassword().trim().equals(UserPassWord.trim())){
             return "密码错误！";
         }
-
         httpSession.setAttribute("user", user);
-
-//        return new ModelAndView(new RedirectView("/WebContent/views/form.jsp"));
         return "OK";
     }
-
-
 
     @RequestMapping(value="/RegUser",method= RequestMethod.POST,produces="text/html;charset=UTF-8")
     @ResponseBody
@@ -68,6 +63,4 @@ public class LoginController {
         userService.RegUser(username,password,sex,birthday);
         return "OK";
     }
-
-
 }

@@ -50,4 +50,16 @@ public class AdminServiceImpl implements AdminServiceI{
     public void DeleteBlogById(String id){
         blogMapper.deleteByPrimaryKey(id);
     }
+
+    @Override
+    public void UpdateBlog(String id, String username, String recievername, String sendcontent, String picpath, int sendtype) {
+        Blog blog = new Blog();
+        blog.setId(id);
+        blog.setSenderid(username);
+        blog.setReciverid(recievername);
+        blog.setSendcontent(sendcontent);
+        blog.setPicpath(picpath);
+        blog.setType(sendtype);
+       blogMapper.updateByPrimaryKey(blog);
+    }
 }

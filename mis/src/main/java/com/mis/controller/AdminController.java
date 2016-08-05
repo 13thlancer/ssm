@@ -35,12 +35,23 @@ public class AdminController {
         if(sendcontent==null || sendcontent.trim().equals("")){
             return "发布内容不能为空！";
         }
-      /*  if(sendtype==""){
-            return"请选择发布类型！";
-        }*/
         adminServiceI.AddBlog(username,recievername,sendcontent,picpath,sendtype);
         return "OK";
     }
+
+    @RequestMapping(value = "/updateBlog",method =RequestMethod.POST,produces="text/html;charaset=UTF-8")
+    @ResponseBody
+    public String updateBlog(String id,String username,String recievername,String sendcontent,String picpath,int sendtype){
+        if(username==null || username.trim().equals("")){
+            return "用户名不能为空！";
+        }
+        if(sendcontent==null || sendcontent.trim().equals("")){
+            return "发布内容不能为空！";
+        }
+        adminServiceI.UpdateBlog(id,username,recievername,sendcontent,picpath,sendtype);
+        return "OK";
+    }
+
 
     @RequestMapping(value="/showBlog",method= RequestMethod.POST)
     @ResponseBody
