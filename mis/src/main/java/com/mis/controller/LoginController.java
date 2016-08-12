@@ -1,17 +1,14 @@
 package com.mis.controller;
 
 import com.mis.pojo.User;
-import com.mis.service.UserService;
+import com.mis.service.UserServiceI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpSession;
-import java.util.Date;
 
 /**
  * Created by Administrator on 2016/7/24.
@@ -20,14 +17,14 @@ import java.util.Date;
 @RequestMapping("/LoginController")
 public class LoginController {
 
-    private UserService userService;
+    private UserServiceI userService;
 
-    public UserService getUserService() {
+    public UserServiceI getUserService() {
         return userService;
     }
 
     @Autowired
-    public void setUserService(UserService userService) {
+    public void setUserService(UserServiceI userService) {
         this.userService = userService;
     }
 
@@ -47,7 +44,7 @@ public class LoginController {
         if(!user.getPassword().trim().equals(UserPassWord.trim())){
             return "密码错误！";
         }
-        httpSession.setAttribute("user", user);
+//        httpSession.setAttribute("username", username);
         return "OK";
     }
 

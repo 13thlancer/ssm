@@ -35,6 +35,12 @@
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
+    <style type="text/css">
+        .hiddenCol
+        {
+            display:none;
+        }
+    </style>
 </head>
 <body class="hold-transition skin-blue sidebar-mini" onload="showBlog();">
 <div class="wrapper">
@@ -56,8 +62,6 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </a>
-
-     
     </nav>
   </header>
   <!-- Left side column. contains the logo and sidebar -->
@@ -72,8 +76,20 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
         <li class="header">主菜单</li>
-       
-        <li class="treeview active">
+          <li class="treeview">
+              <a href="#">
+                  <i class="fa fa-table"></i> <span>商会系统</span>
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu">
+                  <li><a href="require_user.jsp"><i class="fa fa-circle-o"></i>认证用户</a></li>
+                  <li><a href="require_order.jsp"><i class="fa fa-circle-o"></i>需求订单</a></li>
+              </ul>
+          </li>
+
+          <li class="treeview active">
           <a href="#">
             <i class="fa fa-table"></i> <span>点赞系统</span>
                 <span class="pull-right-container">
@@ -81,11 +97,12 @@
                 </span>
           </a>
           <ul class="treeview-menu">
-            <li><a ><i class="fa fa-circle-o"></i>奖品维护</a></li>
-            <li class="active"><a href="data.jsp"><i class="fa fa-circle-o"></i>点赞维护</a></li>
+            <li><a href="flypig_gift.jsp"><i class="fa fa-circle-o"></i>奖品维护</a></li>
+            <li><a href="flypig_user.jsp"><i class="fa fa-circle-o"></i>用户维护</a></li>
+            <li><a href="flypig_convert.jsp"><i class="fa fa-circle-o"></i>奖品兑换</a></li>
+            <li class="active"><a href="flypig.jsp"><i class="fa fa-circle-o"></i>点赞维护</a></li>
           </ul>
         </li>
-        
       </ul>
     </section>
     <!-- /.sidebar -->
@@ -97,24 +114,17 @@
     <section class="content-header">
       <h1>
         点赞维护
-        <small>点赞维护</small>
+        <small>消息维护</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> 主菜单</a></li>
         <li><a href="#">点赞系统</a></li>
-        <li class="active">点赞维护</li>
+        <li class="active">消息维护</li>
       </ol>
     </section>
-      
-      
 
-    
           <!-- /.box -->
-
           <div class="box">
-            <div class="box-header">
-              <h3 class="box-title">Data Table With Full Features</h3>
-            </div>
             <!-- /.box-header -->
             <div class="box-body">
                  <div class="block-content collapse in">
@@ -158,7 +168,6 @@
                                     </tbody>
                                     </thead>
                                 </table>
-
                             </div>
                         </div>
                     </div>
@@ -507,7 +516,6 @@
   <div class="control-sidebar-bg"></div>
 </div>
 <!-- ./wrapper -->
-
 <!-- jQuery 2.2.3 -->
 <script src="../../plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
@@ -523,45 +531,44 @@
 <script src="../../dist/js/app.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../bootstrap/js/bootstrap-dialog.js"></script>
-
 <script src="../../dist/js/demo.js"></script>
 <!-- page script -->
 <script type="text/javascript">
 
+    var selectedTr = null;
     var oTable = null;
+    /*datatable插件赋值及属性设置*/
+    function showBlog() {
+        $.ajax({
+            type: "post",
+            url: "<%=basePath%>adminController/showBlog",
+            dataType: "json",
+            data: {},
+            checkbox:true,
+            error: function () {
+            },
+            success:function (data) {
+                $('#data_post_list').DataTable({
+                    data: data,
+                    columns: [
+                        {
+                            "render": function (data, type, full, meta) {
+                                return '<input onclick="check(this);" name="checkbox" type="checkbox"/>';
+                            }
+                        },
+                        {data: 'id',sClass:"hiddenCol"},
+                        {data: 'senderid'},
+                        {data: 'reciverid'},
+                        {data: 'sendcontent'},
+                        {data: 'senddate'},
+                        {data: 'type'},
+                        {data: 'picpath'}
+                    ]
+                });
+            }
+        });
+    }
 
-        function showBlog() {
-            $.ajax({
-                type: "post",
-                url: "<%=basePath%>adminController/showBlog",
-                dataType: "json",
-                data: {},
-                checkbox:true,
-                error: function () {
-                },
-                success: function (data) {
-                    $('#data_post_list').DataTable({
-                        data: data,
-                        columns: [
-                            {
-                                "render": function (data, type, full, meta) {
-                                    return '<input onclick="check(this);" name="checkbox" type="checkbox"/>';
-                                }
-                            },
-                            {data: 'id', "bSearchable": false, "bVisible": false},
-                            {data: 'senderid'},
-                            {data: 'reciverid'},
-                            {data: 'sendcontent'},
-                            {data: 'senddate'},
-                            {data: 'type'},
-                            {data: 'picpath'}
-                        ]
-                    });
-                }
-            });
-        }
-
-        var selectedTr = null;
         /*function showBlog(){
       $.ajax({
           type: "POST",
@@ -578,55 +585,58 @@
           }
       });
   }*/
-            function check(obj) {
-                var a = obj;
-                var table = $("#data_post_list").dataTable();
-                var nTrs = table.fnGetNodes();//fnGetNodes获取表格所有行，nTrs[i]表示第i行tr
-                if($(a).prop("checked")==true) {
-                    for (var i = 0; i < nTrs.length; i++) {//  if($(nTrs[i]).hasClass('selected')){//相当于$(tr)
-                            $(nTrs[i]).find( "input").attr('checked',false);
-                    }
-                    $(a).prop("checked", true)
-                    for (var i = 0; i < nTrs.length; i++) {//  if($(nTrs[i]).hasClass('selected')){//相当于$(tr)
-                        if ($(nTrs[i]).find( "input").prop("checked") == true) {
-                            selectedTr = nTrs[i];
-                            $(nTrs[i]).find( "input").attr('checked',false);
-                         }
-                    }
-                    $(a).prop("checked", true)
-                }else{
-                    selectedTr = null;
-                    for (var i = 0; i < nTrs.length; i++) {//  if($(nTrs[i]).hasClass('selected')){//相当于$(tr)
-                        $(nTrs[i]).find( "input").attr('checked',false);
-                    }
-                }
-                alert(selectedTr.innerHTML);
-  }
-        function update(){
-          if (selectedTr != null) {
-              $("#update").modal("show");
-              document.getElementById("update_blogid" ).value=selectedTr.cells[1].innerHTML;
-              document.getElementById("update_username"). value=selectedTr.cells[2].innerHTML;
-              document.getElementById("update_recievername"). value=selectedTr.cells[3].innerHTML;
-              document.getElementById("update_sendcontent" ) .value=selectedTr.cells[4].innerHTML;
-              document.getElementById("update_picpath") . value=selectedTr.cells[5].innerHTML;
-              document.getElementById("update_sendtype").value= selectedTr.cells[6]. innerHTML;
-          } else {
-              alert("请选择一行");
-          }
-          selectedTr = null;
-      }
 
-  function deleted(){
-      if (selectedTr != null) {
+    /*勾选框单选设置*/
+    function check(obj) {
+        var a = obj;
+        var table = $("#data_post_list").dataTable();
+        var nTrs = table.fnGetNodes();//fnGetNodes获取表格所有行，nTrs[i]表示第i行tr
+        if($(a).prop("checked")==true) {
+            for (var i = 0; i < nTrs.length; i++) {//  if($(nTrs[i]).hasClass('selected')){//相当于$(tr)
+                $(nTrs[i]).find( "input").attr('checked',false);
+            }
+            $(a).prop("checked", true)
+            for (var i = 0; i < nTrs.length; i++) {//  if($(nTrs[i]).hasClass('selected')){//相当于$(tr)
+                if ($(nTrs[i]).find( "input").prop("checked") == true) {
+                    selectedTr = nTrs[i];
+                    $(nTrs[i]).find( "input").attr('checked',false);
+                }
+            }
+            $(a).prop("checked", true)
+        }else{
+            selectedTr = null;
+            for (var i = 0; i < nTrs.length; i++) {//  if($(nTrs[i]).hasClass('selected')){//相当于$(tr)
+                $(nTrs[i]).find( "input").attr('checked',false);
+            }
+        }
+    }
+
+     /*获取选中行信息*/
+    function update(){
+        if (selectedTr != null) {
+            $("#update").modal("show");
+            document.getElementById("update_blogid" ).value=selectedTr.cells[1].innerHTML;
+            document.getElementById("update_username").value=selectedTr.cells[2].innerHTML;
+            document.getElementById("update_recievername").value=selectedTr.cells[3].innerHTML;
+            document.getElementById("update_sendcontent").value=selectedTr.cells[4].innerHTML;
+            document.getElementById("update_picpath").value=selectedTr.cells[5].innerHTML;
+            document.getElementById("update_sendtype").value= selectedTr.cells[6]. innerHTML;
+        }else{
+            alert("请选择一行");
+        }
+          selectedTr = null;
+    }
+
+    /*删除选中行*/
+    function deleted(){
+        if (selectedTr != null) {
           var delid = selectedTr.cells[1].innerHTML;
           $.ajax({
               type: "POST",
               url:"<%= basePath %>adminController/deleteBlog",
               cache:false ,
               async:true,
-              data:{delid:
-                        delid},
+              data:{delid: delid},
               success:function(data){
                   if (data == "OK") {
                       alert("删除成功！")
@@ -636,18 +646,19 @@
                   }
               }
           });
-      }else
-                {
+      }else {
           alert("请选择一行");
       }
                 selectedTr = null;
-  }
+    }
 
-  function refresh(){
+    /*刷新页面*/
+    function refresh(){
       location.reload("flypig.jsp");
-  }
+    }
 
-  function updateblog(){
+    /*修改选中行*/
+    function updateblog(){
       var postData = {
           id:document.getElementById("update_blogid").value,
           username:document.getElementById("update_username").value,
@@ -660,7 +671,6 @@
           url:"<%=basePath%>adminController/updateBlog",
           async:false,
           data: postData,
-
           success:function(data){
               if (data == "OK") {
                   location.reload("flypig.jsp");
@@ -670,33 +680,35 @@
               }
           }
       });
-  }
+    }
 
-  function addblog(){
-      var postData = {
-          username:document.getElementById("username").value,
-          recievername: document.getElementById("recievername").value,
-          sendcontent:document.
-                  getElementById
-          ("sendcontent").value,
-          picpath: document.
-                  getElementById("picpath").value, sendtype:document.
-                  getElementById("sendtype").value
-      };
-      $.ajax({
-          type:"POST",
-          url:"<%=basePath%>adminController/addBlog",
-          async:false,
-          data:postData,
-          success:function(data){
-              if (data == "OK") {
-                  location.reload("flypig.jsp");
-              } else {
-                  alert(data);
+       /*新增内容*/
+      function addblog(){
+          var postData = {
+              username:document.getElementById("username").value,
+              recievername: document.getElementById("recievername").value,
+              sendcontent:document.
+                      getElementById
+              ("sendcontent").value,
+              picpath: document.
+                      getElementById("picpath").value, sendtype:document.
+                      getElementById("sendtype").value
+          };
+          $.ajax({
+              type:"POST",
+              url:"<%=basePath%>adminController/addBlog",
+              async:false,
+              data:postData,
+              success:function(data){
+                  if (data == "OK") {
+                      location.reload("flypig.jsp");
+                  } else {
+                      alert(data);
+                  }
               }
-          }
-      });
-  }
+          });
+      }
+
     function update_cancel(){
       $("#update").modal("hide");
       var b = document.getElementsByName("checkbox");

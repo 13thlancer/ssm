@@ -1,11 +1,12 @@
 package com.mis.controller;
 
 import com.mis.pojo.User;
-import com.mis.service.UserService;
+import com.mis.service.UserServiceI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -17,14 +18,14 @@ import java.util.List;
 @RequestMapping("/userController")
 public class UserController {
 
-    private UserService userService;
+    private UserServiceI userService;
 
-    public UserService getUserService() {
+    public UserServiceI getUserService() {
         return userService;
     }
 
     @Autowired
-    public void setUserService(UserService userService) {
+    public void setUserService(UserServiceI userService) {
         this.userService = userService;
     }
 
@@ -34,5 +35,4 @@ public class UserController {
         request.setAttribute("user",u);
         return "showUser";
     }
-
 }

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mis.mapper.RequireorderMapper" >
+  <resultMap id="BaseResultMap" type="com.mis.pojo.Requireorder" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="company" property="company" jdbcType="VARCHAR" />
+    <result column="num" property="num" jdbcType="VARCHAR" />
+    <result column="requirename" property="requirename" jdbcType="VARCHAR" />
+    <result column="requiredate" property="requiredate" jdbcType="TIMESTAMP" />
+    <result column="requiretype" property="requiretype" jdbcType="VARCHAR" />
+    <result column="requirestatus" property="requirestatus" jdbcType="VARCHAR" />
+  </resultMap>
+
+    <sql id="showOrder">
+        id,username,phone,company,requirename,requiredate,requiretype,num,requirestatus
+    </sql>
+    <select id="selectByUsername" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="showOrder" />
+        from trequireorder
+        where username = #{username,jdbcType=VARCHAR}
+    </select>
+
+    <select id="selectByType" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="showOrder" />
+        from trequireorder
+        where requiretype = #{type,jdbcType=VARCHAR} and requirestatus = "已推送"
+    </select>
+
+    <select id="selectAll" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="showOrder" />
+        from trequireorder
+    </select>
+
+    <insert id="insert" parameterType="com.mis.pojo.Requireorder">
+        insert into trequireorder (id, userid, username, phone, company, num, requirename, requiredate, requiretype, requirestatus)
+        values (#{id,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{company,jdbcType=VARCHAR},
+        #{num,jdbcType=VARCHAR}, #{requirename,jdbcType=VARCHAR}, #{requiredate,jdbcType=TIMESTAMP}, #{requiretype,jdbcType=VARCHAR},#{requirestatus,jdbcType=VARCHAR})
+    </insert>
+
+    <update id="updateStatus" parameterType="com.mis.pojo.Requireorder">
+        update trequireorder set requirestatus = "已推送"
+        where id = #{id,jdbcType=VARCHAR}
+    </update>
+
+    <update id="updateById" parameterType="com.mis.pojo.Requireorder">
+        update trequireorder set requirename = #{requirename,jdbcType=VARCHAR}, num = #{num,jdbcType=VARCHAR},requiretype=#{requiretype,jdbcType=VARCHAR}
+        where id=#{id,jdbcType=VARCHAR}
+    </update>
+
+</mapper>
