@@ -1,5 +1,7 @@
 package com.mis.pojo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class Blog {
@@ -49,6 +51,7 @@ public class Blog {
         this.sendcontent = sendcontent == null ? null : sendcontent.trim();
     }
 
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     public Date getSenddate() {
         return senddate;
     }

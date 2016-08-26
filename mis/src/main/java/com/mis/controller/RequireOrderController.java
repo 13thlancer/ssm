@@ -65,6 +65,13 @@ public class RequireOrderController {
         return "OK";
     }
 
+    @RequestMapping(value="/deleteOrder",method = RequestMethod.POST)
+    @ResponseBody
+    public String deleteOrder(String delid){
+        requireOrderServiceI.DeleteOrderById(delid);
+        return "OK";
+    }
+
     @RequestMapping(value = "/updateOrder",method = RequestMethod.POST)
     @ResponseBody
     public String updateOrder(String id,String requirename,String num,String type){

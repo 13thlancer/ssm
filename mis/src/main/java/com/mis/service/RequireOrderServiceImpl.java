@@ -62,7 +62,7 @@ public class RequireOrderServiceImpl implements RequireOrderServiceI{
 
     @Override
     public void DeleteOrderById(String id) {
-
+        requireorderMapper.deleteByPrimaryKey(id);
     }
 
     @Override

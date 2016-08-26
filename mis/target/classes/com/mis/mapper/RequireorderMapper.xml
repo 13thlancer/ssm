@@ -47,6 +47,10 @@
         where id = #{id,jdbcType=VARCHAR}
     </update>
 
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+        DELETE from trequireorder WHERE id = #{id,jdbcType=VARCHAR}
+    </delete>
+
     <update id="updateById" parameterType="com.mis.pojo.Requireorder">
         update trequireorder set requirename = #{requirename,jdbcType=VARCHAR}, num = #{num,jdbcType=VARCHAR},requiretype=#{requiretype,jdbcType=VARCHAR}
         where id=#{id,jdbcType=VARCHAR}
