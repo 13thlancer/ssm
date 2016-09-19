@@ -21,16 +21,8 @@ import java.util.UUID;
 @RequestMapping("/RequireUserController")
 public class RequireUserController {
 
-    private RequireUserServiceI requireUserServiceI;
-
-    public RequireUserServiceI getRequireUserServiceI() {
-        return requireUserServiceI;
-    }
-
     @Autowired
-    public void setRequireUserServiceI(RequireUserServiceI requireUserServiceI) {
-        this.requireUserServiceI = requireUserServiceI;
-    }
+    private RequireUserServiceI requireUserServiceI;
 
     @RequestMapping(value="/ShowAllUser",method= RequestMethod.POST)
     @ResponseBody
@@ -60,7 +52,14 @@ public class RequireUserController {
     @RequestMapping(value="/DeleteUser",method = RequestMethod.POST)
     @ResponseBody
     public String DeleteUser(String delid){
-        requireUserServiceI.DeleteBlogById(delid);
+        requireUserServiceI.DeleteUserById(delid);
+        return "OK";
+    }
+
+    @RequestMapping(value = "/UpdateUser", method = RequestMethod.POST)
+    @ResponseBody
+    public String UpdateUser(String id, String username, String phone, String company) {
+        requireUserServiceI.UpdateUserById(id,username,phone,company);
         return "OK";
     }
 
@@ -80,7 +79,7 @@ public class RequireUserController {
         if(!ruser.getUsername().trim().equals(username.trim())){
             return "密码错误！";
         }
-        httpSession.setAttribute("username", username);
+        httpSession.setAttribute("username",username);
         httpSession.setAttribute("phone",phone);
         return "OK";
     }

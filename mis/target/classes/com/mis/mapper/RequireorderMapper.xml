@@ -4,7 +4,7 @@
   <resultMap id="BaseResultMap" type="com.mis.pojo.Requireorder" >
     <id column="id" property="id" jdbcType="VARCHAR" />
     <result column="username" property="username" jdbcType="VARCHAR" />
-    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="conphone" property="conphone" jdbcType="VARCHAR" />
     <result column="company" property="company" jdbcType="VARCHAR" />
     <result column="num" property="num" jdbcType="VARCHAR" />
     <result column="requirename" property="requirename" jdbcType="VARCHAR" />
@@ -14,13 +14,28 @@
   </resultMap>
 
     <sql id="showOrder">
-        id,username,phone,company,requirename,requiredate,requiretype,num,requirestatus
+        id,userid,username,conname,conphone,company,requirename,requiredate,requiretype,num,requirestatus
     </sql>
     <select id="selectByUsername" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select
+    <include refid="showOrder" />
+    from trequireorder
+    where username = #{username,jdbcType=VARCHAR}
+</select>
+
+    <select id="selectBySearch" resultMap="BaseResultMap" parameterType="com.mis.pojo.Requireorder">
         select
         <include refid="showOrder" />
         from trequireorder
-        where username = #{username,jdbcType=VARCHAR}
+        where username = #{username,jdbcType = VARCHAR} AND (conname LIKE #{search,jdbcType=VARCHAR} OR conphone LIKE #{search,jdbcType=VARCHAR}  OR requirename LIKE #{search,jdbcType=VARCHAR}
+         OR requiretype LIKE #{search,jdbcType=VARCHAR} OR num LIKE #{search,jdbcType=VARCHAR})
+    </select>
+
+    <select id="selectByStatus" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="showOrder" />
+        from trequireorder
+        where username = #{username,jdbcType=VARCHAR} and requirestatus = "已推送"
     </select>
 
     <select id="selectByType" resultMap="BaseResultMap" parameterType="java.lang.String">
@@ -37,8 +52,8 @@
     </select>
 
     <insert id="insert" parameterType="com.mis.pojo.Requireorder">
-        insert into trequireorder (id, userid, username, phone, company, num, requirename, requiredate, requiretype, requirestatus)
-        values (#{id,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{company,jdbcType=VARCHAR},
+        insert into trequireorder (id, userid, username, conname,conphone, company, num, requirename, requiredate, requiretype, requirestatus)
+        values (#{id,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{conname,jdbcType=VARCHAR}, #{conphone,jdbcType=VARCHAR}, #{company,jdbcType=VARCHAR},
         #{num,jdbcType=VARCHAR}, #{requirename,jdbcType=VARCHAR}, #{requiredate,jdbcType=TIMESTAMP}, #{requiretype,jdbcType=VARCHAR},#{requirestatus,jdbcType=VARCHAR})
     </insert>
 
@@ -52,7 +67,7 @@
     </delete>
 
     <update id="updateById" parameterType="com.mis.pojo.Requireorder">
-        update trequireorder set requirename = #{requirename,jdbcType=VARCHAR}, num = #{num,jdbcType=VARCHAR},requiretype=#{requiretype,jdbcType=VARCHAR}
+        update trequireorder set conname = #{conname,jdbcType=VARCHAR},conphone = #{conphone,jdbcType=VARCHAR}, requirename = #{requirename,jdbcType=VARCHAR}, num = #{num,jdbcType=VARCHAR},requiretype=#{requiretype,jdbcType=VARCHAR}
         where id=#{id,jdbcType=VARCHAR}
     </update>
 

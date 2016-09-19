@@ -424,7 +424,7 @@
         };
         $.ajax({
             type:"POST",
-            url:"<%=basePath%>requireOrderController/showOrderByType",
+            url:"<%=basePath%>RequireOrderController/ShowOrderByType",
             async:false,
             data:postData,
             success:function(data){

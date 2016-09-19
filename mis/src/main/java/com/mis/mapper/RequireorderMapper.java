@@ -20,7 +20,11 @@ public interface RequireorderMapper {
 
     List<Requireorder> selectByUsername(String username);
 
+    List<Requireorder> selectByStatus(String username);
+
     List<Requireorder> selectByType(String type);
+
+    List<Requireorder> selectBySearch(Requireorder record);
 
     List<Requireorder> selectAll();
 

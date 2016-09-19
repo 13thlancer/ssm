@@ -40,7 +40,7 @@
         }
     </style>
 </head>
-<body class="hold-transition skin-blue sidebar-mini" onload="showBlog();">
+<body class="hold-transition skin-blue sidebar-mini" onload="showOrder();">
 <div class="wrapper">
 
     <header class="main-header">
@@ -49,7 +49,7 @@
             <!-- mini logo for sidebar mini 50x50 pixels -->
             <span class="logo-mini"><b>MIS</b></span>
             <!-- logo for regular state and mobile devices -->
-            <span class="logo-lg"><b>后台管理</b></span>
+            <span class="logo-lg"><b>商会后台管理系统</b></span>
         </a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top">
@@ -66,18 +66,36 @@
     <aside class="main-sidebar">
         <!-- sidebar: style can be found in sidebar.less -->
         <section class="sidebar">
+            <!-- Sidebar user panel -->
+
+            <!-- search form -->
+
+            <!-- /.search form -->
             <!-- sidebar menu: : style can be found in sidebar.less -->
             <ul class="sidebar-menu">
                 <li class="header">主菜单</li>
-                <li class="treeview active">
+                <li class="treeview">
                     <a href="#">
-                        <i class="fa fa-table"></i> <span>商会系统</span>
+                        <i class="fa fa-table"></i><span>用户管理</span>
                 <span class="pull-right-container">
                   <i class="fa fa-angle-left pull-right"></i>
                 </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="require_user.jsp"><i class="fa fa-circle-o"></i>认证用户</a></li>
+                        <li><a href="admin_user.jsp"><i class="fa fa-circle-o"></i>管理员</a></li>
+                        <li><a href="require_user.jsp"><i class="fa fa-circle-o"></i>微信注册用户</a></li>
+                        <li><a href="Yzj_user.jsp"><i class="fa fa-circle-o"></i>云之家用户</a></li>
+                    </ul>
+                </li>
+
+                <li class="treeview active">
+                    <a href="#">
+                        <i class="fa fa-table"></i><span>订单管理</span>
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+                    </a>
+                    <ul class="treeview-menu">
                         <li class="active"><a href="require_order.jsp"><i class="fa fa-circle-o"></i>需求订单</a></li>
                     </ul>
                 </li>
@@ -97,57 +115,58 @@
                     </ul>
                 </li>
 
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-table"></i> <span>云之家界面</span>
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="mCloudlog.jsp"><i class="fa fa-circle-o"></i>认证用户</a></li>
+                <%--<li class="treeview">--%>
+                <%--<a href="#">--%>
+                <%--<i class="fa fa-table"></i> <span>云之家界面</span>--%>
+                <%--<span class="pull-right-container">--%>
+                <%--<i class="fa fa-angle-left pull-right"></i>--%>
+                <%--</span>--%>
+                <%--</a>--%>
+                <%--<ul class="treeview-menu">--%>
+                <%--<li><a href="mCloudlog.jsp"><i class="fa fa-circle-o"></i>认证用户</a></li>--%>
 
-                        <li><a href="mCloudList.jsp"><i class="fa fa-circle-o"></i>需求清单</a></li>
-                        <%--<li><a href="require_order.jsp"><i class="fa fa-circle-o"></i>需求订单</a></li>--%>
-                    </ul>
-                </li>
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-table"></i> <span>微信界面</span>
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="mWXlogin.jsp"><i class="fa fa-circle-o"></i>登录微信</a></li>
-                        <li><a href="muserreg.jsp"><i class="fa fa-circle-o"></i>用户绑定</a></li>
-                        <li><a href="morderlist.jsp"><i class="fa fa-circle-o"></i>需求订单</a></li>
-                    </ul>
-                </li>
+                <%--<li><a href="mCloudList.jsp"><i class="fa fa-circle-o"></i>需求清单</a></li>--%>
+                <%--&lt;%&ndash;<li><a href="require_order.jsp"><i class="fa fa-circle-o"></i>需求订单</a></li>&ndash;%&gt;--%>
+                <%--</ul>--%>
+                <%--</li>--%>
+                <%--<li class="treeview">--%>
+                <%--<a href="#">--%>
+                <%--<i class="fa fa-table"></i> <span>微信界面</span>--%>
+                <%--<span class="pull-right-container">--%>
+                <%--<i class="fa fa-angle-left pull-right"></i>--%>
+                <%--</span>--%>
+                <%--</a>--%>
+                <%--<ul class="treeview-menu">--%>
+                <%--<li><a href="mWXlogin.jsp"><i class="fa fa-circle-o"></i>登录微信</a></li>--%>
+                <%--<li><a href="muserreg.jsp"><i class="fa fa-circle-o"></i>用户绑定</a></li>--%>
+                <%--<li><a href="morderlist.jsp"><i class="fa fa-circle-o"></i>需求订单</a></li>--%>
+                <%--</ul>--%>
+                <%--</li>--%>
             </ul>
         </section>
         <!-- /.sidebar -->
     </aside>
+
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                点赞维护
-                <small>消息维护</small>
+                订单管理
+                <small>需求订单</small>
             </h1>
-            <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> 主菜单</a></li>
-                <li><a href="#">点赞系统</a></li>
-                <li class="active">消息维护</li>
-            </ol>
+            <%--<ol class="breadcrumb">--%>
+                <%--<li><a href="#"><i class="fa fa-dashboard"></i>主菜单</a></li>--%>
+                <%--<li><a href="#">点赞系统</a></li>--%>
+                <%--<li class="active">消息维护</li>--%>
+            <%--</ol>--%>
         </section>
 
         <!-- /.box -->
         <div class="box">
             <div class="box-header">
-                <h3 class="box-title">Data Table With Full Features</h3>
+                <%--<h3 class="box-title">Data Table With Full Features</h3>--%>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -166,36 +185,38 @@
                             <div class="btn-group">
                                 <a href="#"><button class="btn btn-default" onclick="refresh();">刷新<i class="icon-refresh"></i></button></a>
                             </div>
+                            <div class="btn-group">
+                                <a href="#"><button class="btn btn-default" onclick="push();return false;">推送<i class="icon-refresh"></i></button></a>
+                            </div>
 
-                             <div class="btn-group pull-right">
-                                 <button data-toggle="dropdown" class="btn dropdown-toggle">更多 <span class="caret"></span></button>
-                                 <ul class="dropdown-menu">
-                                    <li><a href="#" onclick="push();return false;">推送</a></li>
-                                    <li><a href="#">保存为PDF</a></li>
-                                    <li><a href="#">导入EXCEL</a></li>
-                                 </ul>
-                              </div>
+                            <%--<div class="btn-group pull-right">--%>
+                                <%--<button data-toggle="dropdown" class="btn dropdown-toggle">更多<span class="caret"></span></button>--%>
+                                <%--<ul class="dropdown-menu">--%>
+                                    <%--<li><a href="#" onclick="push();return false;">推送</a></li>--%>
+                                    <%--<li><a href="#">保存为PDF</a></li>--%>
+                                    <%--<li><a href="#">导入EXCEL</a></li>--%>
+                                <%--</ul>--%>
+                            <%--</div>--%>
 
                         </div>
                         <br>
                         <table cellpadding="0" cellspacing="0" border="0"  data-click-to-select="true" data-toggle="table" class="table table-striped table-hover table-bordered" id="require_order">
                             <thead>
-                            <tr>
-                                <th><input type="checkbox" id="checkAll" name="checkAll"/></th>
-                                <th>ID</th>
-                                <th>用户</th>
-                                <th>公司</th>
-                                <th>联系方式</th>
-                                <th>需求名</th>
-                                <th>需求数量</th>
-                                <th>需求类型</th>
-                                <th>发布时间</th>
-                                <th>状态</th>
-                                <th>操作</th>
-
-                            </tr>
-                            <tbody>
-                            </tbody>
+                                <tr>
+                                    <th><input type="checkbox" id="checkAll" name="checkAll"/></th>
+                                    <th>ID</th>
+                                    <th>用户</th>
+                                    <th>联系人</th>
+                                    <th>联系方式</th>
+                                    <th>需求名</th>
+                                    <th>需求数量</th>
+                                    <th>需求类型</th>
+                                    <th>发布时间</th>
+                                    <th>状态</th>
+                                    <th>操作</th>
+                                </tr>
+                                <tbody>
+                                </tbody>
                             </thead>
                         </table>
                     </div>
@@ -240,11 +261,11 @@
                             <label class="control-label">需求类型<span class="required">*</span></label>
                             <div class="controls">
                                 <select id="type" name="category">
-                                    <option value="">请选择...</option>
-                                    <option value="1">A</option>
-                                    <option value="2">B</option>
-                                    <option value="3">C</option>
-                                    <option value="4">D</option>
+                                    <option value="">请选择需求类型</option>
+                                    <option value="办公用品">办公用品</option>
+                                    <option value="学习用品">学习用品</option>
+                                    <option value="生活用品">生活用品</option>
+                                    <option value="建筑材料">建筑材料</option>
                                 </select>
                             </div>
                         </div>
@@ -284,7 +305,7 @@
                         <div class="control-group" style="display: none;">
                             <label class="control-label">ID<span class="required">*</span></label>
                             <div class="controls">
-                                <input id="update_blogid" type="text" name="name" data-required="1" />
+                                <input id="update_orderid" type="text" name="name" data-required="1" />
                             </div>
                         </div>
 
@@ -296,16 +317,16 @@
                         </div>
 
                         <div class="control-group">
-                            <label class="control-label">公司</label>
+                            <label class="control-label">联系人</label>
                             <div class="controls">
-                                <input id="update_company" type="text" name="name" data-required="1" readonly="true"/>
+                                <input id="update_conname" type="text" name="name" data-required="1" readonly="true"/>
                             </div>
                         </div>
 
                         <div class="control-group">
-                            <label class="control-label">手机号</label>
+                            <label class="control-label">联系方式</label>
                             <div class="controls">
-                                <input id="update_phone" type="text" name="name" data-required="1" readonly="true"/>
+                                <input id="update_conphone" type="text" name="name" data-required="1" readonly="true"/>
                             </div>
                         </div>
 
@@ -326,12 +347,12 @@
                         <div class="control-group">
                             <label class="control-label">需求类型</label>
                             <div class="controls">
-                                <select id="update_type" name="category">
-                                    <option value="">请选择...</option>
-                                    <option value="1">A</option>
-                                    <option value="2">B</option>
-                                    <option value="3">C</option>
-                                    <option value="4">D</option>
+                                <select id="update_requiretype" name="category">
+                                    <option value="">请选择需求类型</option>
+                                    <option value="办公用品">办公用品</option>
+                                    <option value="学习用品">学习用品</option>
+                                    <option value="生活用品">生活用品</option>
+                                    <option value="建筑材料">建筑材料</option>
                                 </select>
                             </div>
                         </div>
@@ -346,6 +367,32 @@
     </div>
 </div>
 
+<!--删除弹出层-->
+<div class="modal fade" id="delete" style="display:none;" data-backdrop="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">删除信息</h4>
+            </div>
+            <div class="modal-body">
+                <form action="#" id="delform" class="form-horizontal">
+                    <fieldset>
+                        <div class="control-group" style="display: none;">
+                            <div class="controls">
+                                <input id="del_orderid" type="text" name="name" data-required="1" />
+                            </div>
+                        </div>
+                        确定删除信息？
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary" onclick="delorder();return false;">删除</button>
+                            <button id="delCancel" type="button" class="btn" onclick="del_cancel();">取消</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 <footer class="main-footer">
@@ -570,10 +617,10 @@
     var oTable = null;
 
     /*datatable插件赋值及属性设置*/
-    function showBlog() {
+    function showOrder() {
         $.ajax({
             type: "post",
-            url: "<%=basePath%>requireOrderController/showAllOrder",
+            url: "<%=basePath%>RequireOrderController/ShowAllOrder",
             dataType: "json",
             data: {},
             checkbox:true,
@@ -590,8 +637,8 @@
                         },
                         {data: 'id',sClass:"hiddenCol"},
                         {data: 'username'},
-                        {data: 'company'},
-                        {data: 'phone'},
+                        {data: 'conname'},
+                        {data: 'conphone'},
                         {data: 'requirename'},
                         {data: 'num'},
                         {data: 'requiretype'},
@@ -599,10 +646,16 @@
                         {data: 'requirestatus'},
                         {
                             "render": function (data, type, row) {
-                                alert(row.id);
                                 var id= '"' + row.id + '"';
-                                var html = "<a href='javascript:void(0);'  onclick='edit("+ id + ")' class='up btn btn-default btn-xs'><i class='fa fa-arrow-up'></i> 编辑</a>"
-                                html += "<a href='javascript:void(0);'   onclick='delete("+ id + ")'  class='down btn btn-default btn-xs'><i class='fa fa-arrow-down'></i> 删除</a>"
+                                var username = '"' + row.username +'"';
+                                var conname = '"'+ row.conname +'"';
+                                var conphone = '"' + row.conphone +'"';
+                                var requirename = '"' +row.requirename+ '"';
+                                var num ='"'+ row.num +'"';
+                                var requiretype = '"'+ row.requiretype +'"';
+                                var html = "<a href='javascript:void(0);'  onclick='edit("+ id +","+username+","+conname+","+conphone+","+requirename+","+num+","+requiretype+")' class='up btn btn-default btn-xs'><i class='fa fa-arrow-up'></i> 编辑</a>"
+                                html += "<a href='javascript:void(0);'   onclick='showdel("+ id +")'  class='down btn btn-default btn-xs'><i class='fa fa-arrow-down'></i> 删除</a>"
+                                html += "<a href='javascript:void(0);' onclick='push("+id+")' class='down btn btn-default btn-xs'><i class='fa fa-arrow-right'></i>推送</a>"
                                 return html;
                             }
                         }
@@ -612,23 +665,6 @@
         });
     }
 
-
-    /*function showBlog(){
-     $.ajax({
-     type: "POST",
-     url: "<%=basePath%>adminController/showBlog",
-     cache:false ,
-     dataType:'json',
-     async: false,
-     success: function (data) {
-     var length = data.length;
-     for(var i = 0;i<length;i++)
-     {
-     $('#data_post_list').append('<tr onclick="check(this);"><td><input type="checkbox" id="check" name="checkbox" /></td><td>'+data[i].id+'</td><td>'+data[i].senderid+'</td><td>'+data[i].reciverid+'</td><td>'+data[i].sendcontent+'</td><td>'+data[i].senddate+'</td><td>'+data[i].type+'</td><td>'+data[i].picpath+'</td></tr>');
-     }
-     }
-     });
-     }*/
 
     /*勾选框单选设置*/
     function check(obj) {
@@ -656,6 +692,18 @@
     }
 
     /*获取选中行信息*/
+    function edit(id,username,conname,conphone,requirename,num,requiretype){
+        $("#update").modal("show");
+        document.getElementById("update_orderid" ).value=id;
+        document.getElementById("update_username").value=username;
+        document.getElementById("update_conname").value=conname;
+        document.getElementById("update_conphone").value=conphone;
+        document.getElementById("update_requirename").value=requirename;
+        document.getElementById("update_num").value=num;
+//        document.getElementById("update_requiretype").html=requiretype;
+        $("#update_requiretype").val(requiretype);
+    }
+
     function update(){
         if (selectedTr != null) {
             $("#update").modal("show");
@@ -672,12 +720,13 @@
         selectedTr = null;
     }
 
-    function push(){
-        if(selectedTr != null){
-            var pushid = selectedTr.cells[1].innerHTML;
+    function push(id){
+//        if(selectedTr != null){
+//            var pushid = selectedTr.cells[1].innerHTML;
+            var pushid = id;
             $.ajax({
                 type: "POST",
-                url:"<%= basePath %>requireOrderController/pushOrder",
+                url:"<%= basePath %>RequireOrderController/PushOrder",
                 cache:false ,
                 async:true,
                 data:{pushid: pushid},
@@ -690,11 +739,38 @@
                     }
                 }
             });
-        }else{
-            alert("请选择一行！");
-        }
-        selectedTr = null;
+
+// else{
+//            alert("请选择一行！");
+//        }
+//        selectedTr = null;
     }
+
+    function showdel(id){
+        var delid  = id;
+        $("#delete").modal("show");
+        document.getElementById("del_orderid").value = delid;
+    }
+
+    function delorder(){
+        var delid = document.getElementById("del_orderid").value;
+        $.ajax({
+            type: "POST",
+            url:"<%= basePath %>RequireOrderController/DeleteOrder",
+            cache:false ,
+            async:true,
+            data:{delid: delid},
+            success:function(data){
+                if (data == "OK") {
+                    alert("删除成功！")
+                    location.reload("flypig.jsp");
+                } else {
+                    alert(data);
+                }
+            }
+        });
+    }
+
 
     /*删除选中行*/
     function deleted(){
@@ -773,6 +849,7 @@
             }
         });
     }
+
     function update_cancel(){
         $("#update").modal("hide");
         var b = document.getElementsByName("checkbox");
@@ -787,44 +864,9 @@
         $("#add").modal("hide");
     }
 
-    function getTree() {
-        var tree = [
-            {
-                text: "Parent 1",
-                nodes: [
-                    {
-                        text: "Child 1",
-                        nodes: [
-                            {
-                                text: "Grandchild 1"
-                            },
-                            {
-                                text: "Grandchild 2"
-                            }
-                        ]
-                    },
-                    {
-                        text: "Child 2"
-                    }
-                ]
-            },
-            {
-                text: "Parent 2"
-            },
-            {
-                text: "Parent 3"
-            },
-            {
-                text: "Parent 4"
-            },
-            {
-                text: "Parent 5"
-            }
-        ];
-        return tree;
+    function del_cancel(){
+        $("#delete").modal("hide");
     }
-
-    $('#tree').treeview({data: getTree()});
 
 </script>
 </body>

@@ -51,8 +51,18 @@ public class RequireUserServiceImpl implements RequireUserServiceI{
     }
 
     @Override
-    public void DeleteBlogById(String delid) {
+    public void DeleteUserById(String delid) {
         requireuserMapper.deleteByPrimaryKey(delid);
+    }
+
+    @Override
+    public void UpdateUserById(String id, String username, String phone, String company) {
+        Requireuser user = new Requireuser();
+        user.setId(id);
+        user.setUsername(username);
+        user.setPhone(phone);
+        user.setCompany(company);
+        requireuserMapper.updateByPrimaryKey(user);
     }
 
     @Override

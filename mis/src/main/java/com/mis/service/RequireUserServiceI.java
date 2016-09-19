@@ -16,7 +16,9 @@ public interface RequireUserServiceI {
 
     public String SelectUserCompany(String phone);
 
-    public void DeleteBlogById(String delid);
+    public void DeleteUserById(String delid);
+
+    public void UpdateUserById(String id,String username,String phone,String company);
 
     public List ShowAllUser();
 

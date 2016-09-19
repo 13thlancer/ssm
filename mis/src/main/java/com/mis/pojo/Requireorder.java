@@ -11,7 +11,9 @@ public class Requireorder {
 
     private String username;
 
-    private String phone;
+    private String conname;
+
+    private String conphone;
 
     private String company;
 
@@ -19,11 +21,13 @@ public class Requireorder {
 
     private String requirename;
 
-    private Date requiredate;
+    private String requiredate;
 
     private String requiretype;
 
     private String requirestatus;
+
+    private String search;
 
     public String getId() {
         return id;
@@ -65,12 +69,11 @@ public class Requireorder {
         this.requirename = requirename == null ? null : requirename.trim();
     }
 
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
-    public Date getRequiredate() {
+    public String getRequiredate() {
         return requiredate;
     }
 
-    public void setRequiredate(Date requiredate) {
+    public void setRequiredate(String requiredate) {
         this.requiredate = requiredate;
     }
 
@@ -98,11 +101,27 @@ public class Requireorder {
         this.company = company;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getConname() {
+        return conname;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setConname(String conname) {
+        this.conname = conname;
+    }
+
+    public String getConphone() {
+        return conphone;
+    }
+
+    public void setConphone(String conphone) {
+        this.conphone = conphone;
+    }
+
+    public String getSearch() {
+        return search;
+    }
+
+    public void setSearch(String search) {
+        this.search = search;
     }
 }

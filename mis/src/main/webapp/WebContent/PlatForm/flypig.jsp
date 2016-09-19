@@ -312,9 +312,30 @@
         </div>
     </div>
 
-    
-    
-  <footer class="main-footer">
+<!--删除弹出层-->
+<div class="modal fade" id="delete" style="display:none;" data-backdrop="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">删除信息</h4>
+            </div>
+            <div class="modal-body">
+                <form action="#" id="delform" class="form-horizontal">
+                    <fieldset>
+                        确定删除此条记录？
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary" onclick="deluser();return false;">删除</button>
+                            <button id="delCancel" type="button" class="btn" onclick="del_cancel();">取消</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<footer class="main-footer">
     <div class="pull-right hidden-xs">
       <b>Version</b> 2.3.5
     </div>
@@ -637,6 +658,7 @@
         document.getElementById("update_picpath").value=picpath;
         document.getElementById("update_sendtype").value= sendtype;
     }
+
     function update(){
         if (selectedTr != null) {
             $("#update").modal("show");
@@ -652,9 +674,13 @@
           selectedTr = null;
     }
 
-    /*删除选中行*/
-    function del(id){
+    function deleted(id){
         var delid = id;
+        $("#delete").modal("show");
+    }
+
+    /*删除选中行*/
+    function del(){
         $.ajax({
             type: "POST",
             url:"<%= basePath %>adminController/deleteBlog",

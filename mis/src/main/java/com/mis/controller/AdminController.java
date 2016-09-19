@@ -15,16 +15,8 @@ import java.util.List;
 @Controller
 @RequestMapping("/adminController")
 public class AdminController {
-
-    private AdminServiceI adminServiceI;
-
-    public AdminServiceI getAdminServiceI() {
-        return adminServiceI;
-    }
     @Autowired
-    public void setAdminServiceI(AdminServiceI adminServiceI) {
-        this.adminServiceI = adminServiceI;
-    }
+    private AdminServiceI adminServiceI;
 
     @RequestMapping(value="/addBlog",method= RequestMethod.POST,produces="text/html;charset=UTF-8")
     @ResponseBody

@@ -18,16 +18,8 @@ import java.util.List;
 @RequestMapping("/userController")
 public class UserController {
 
-    private UserServiceI userService;
-
-    public UserServiceI getUserService() {
-        return userService;
-    }
-
     @Autowired
-    public void setUserService(UserServiceI userService) {
-        this.userService = userService;
-    }
+    private UserServiceI userService;
 
     @RequestMapping("/showUser")
     public String showUser(String id,HttpServletRequest request){

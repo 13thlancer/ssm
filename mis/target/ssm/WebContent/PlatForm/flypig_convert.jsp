@@ -315,6 +315,27 @@
     </div>
 </div>
 
+<!--删除弹出层-->
+<div class="modal fade" id="delete" style="display:none;" data-backdrop="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">删除信息</h4>
+            </div>
+            <div class="modal-body">
+                <form action="#" id="delform" class="form-horizontal">
+                    <fieldset>
+                        确定删除信息？
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary" onclick="deluser();return false;">删除</button>
+                            <button id="delCancel" type="button" class="btn" onclick="del_cancel();">取消</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 <footer class="main-footer">

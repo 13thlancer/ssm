@@ -39,7 +39,7 @@
         }
     </style>
 </head>
-<body class="hold-transition skin-blue sidebar-mini" onload="showBlog();">
+<body class="hold-transition skin-blue sidebar-mini" onload="showUser();">
 <div class="wrapper">
 
     <header class="main-header">
@@ -48,7 +48,7 @@
             <!-- mini logo for sidebar mini 50x50 pixels -->
             <span class="logo-mini"><b>MIS</b></span>
             <!-- logo for regular state and mobile devices -->
-            <span class="logo-lg"><b>后台管理</b></span>
+            <span class="logo-lg"><b>商会后台管理系统</b></span>
         </a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top">
@@ -75,13 +75,26 @@
                 <li class="header">主菜单</li>
                 <li class="treeview active">
                     <a href="#">
-                        <i class="fa fa-table"></i><span>商会系统</span>
+                        <i class="fa fa-table"></i><span>用户管理</span>
                 <span class="pull-right-container">
                   <i class="fa fa-angle-left pull-right"></i>
                 </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li class="active"><a href="require_user.jsp"><i class="fa fa-circle-o"></i>认证用户</a></li>
+                        <li><a href="admin_user.jsp"><i class="fa fa-circle-o"></i>管理员</a></li>
+                        <li class="active"><a href="require_user.jsp"><i class="fa fa-circle-o"></i>微信注册用户</a></li>
+                        <li><a href="Yzj_user.jsp"><i class="fa fa-circle-o"></i>云之家用户</a></li>
+                    </ul>
+                </li>
+
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-table"></i><span>订单管理</span>
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+                    </a>
+                    <ul class="treeview-menu">
                         <li><a href="require_order.jsp"><i class="fa fa-circle-o"></i>需求订单</a></li>
                     </ul>
                 </li>
@@ -101,33 +114,33 @@
                     </ul>
                 </li>
 
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-table"></i> <span>云之家界面</span>
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="mCloudlog.jsp"><i class="fa fa-circle-o"></i>认证用户</a></li>
+                <%--<li class="treeview">--%>
+                    <%--<a href="#">--%>
+                        <%--<i class="fa fa-table"></i> <span>云之家界面</span>--%>
+                <%--<span class="pull-right-container">--%>
+                  <%--<i class="fa fa-angle-left pull-right"></i>--%>
+                <%--</span>--%>
+                    <%--</a>--%>
+                    <%--<ul class="treeview-menu">--%>
+                        <%--<li><a href="mCloudlog.jsp"><i class="fa fa-circle-o"></i>认证用户</a></li>--%>
 
-                        <li><a href="mCloudList.jsp"><i class="fa fa-circle-o"></i>需求清单</a></li>
-                        <%--<li><a href="require_order.jsp"><i class="fa fa-circle-o"></i>需求订单</a></li>--%>
-                    </ul>
-                </li>
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-table"></i> <span>微信界面</span>
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="mWXlogin.jsp"><i class="fa fa-circle-o"></i>登录微信</a></li>
-                        <li><a href="muserreg.jsp"><i class="fa fa-circle-o"></i>用户绑定</a></li>
-                        <li><a href="morderlist.jsp"><i class="fa fa-circle-o"></i>需求订单</a></li>
-                    </ul>
-                </li>
+                        <%--<li><a href="mCloudList.jsp"><i class="fa fa-circle-o"></i>需求清单</a></li>--%>
+                        <%--&lt;%&ndash;<li><a href="require_order.jsp"><i class="fa fa-circle-o"></i>需求订单</a></li>&ndash;%&gt;--%>
+                    <%--</ul>--%>
+                <%--</li>--%>
+                <%--<li class="treeview">--%>
+                    <%--<a href="#">--%>
+                        <%--<i class="fa fa-table"></i> <span>微信界面</span>--%>
+                <%--<span class="pull-right-container">--%>
+                  <%--<i class="fa fa-angle-left pull-right"></i>--%>
+                <%--</span>--%>
+                    <%--</a>--%>
+                    <%--<ul class="treeview-menu">--%>
+                        <%--<li><a href="mWXlogin.jsp"><i class="fa fa-circle-o"></i>登录微信</a></li>--%>
+                        <%--<li><a href="muserreg.jsp"><i class="fa fa-circle-o"></i>用户绑定</a></li>--%>
+                        <%--<li><a href="morderlist.jsp"><i class="fa fa-circle-o"></i>需求订单</a></li>--%>
+                    <%--</ul>--%>
+                <%--</li>--%>
             </ul>
         </section>
         <!-- /.sidebar -->
@@ -138,14 +151,14 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                商会系统
-                <small>认证用户</small>
+                用户管理
+                <small>微信注册用户</small>
             </h1>
-            <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i>主菜单</a></li>
-                <li><a href="#">商会系统</a></li>
-                <li class="active">认证用户</li>
-            </ol>
+            <%--<ol class="breadcrumb">--%>
+                <%--<li><a href="#"><i class="fa fa-dashboard"></i>主菜单</a></li>--%>
+                <%--<li><a href="#">商会系统</a></li>--%>
+                <%--<li class="active">认证用户</li>--%>
+            <%--</ol>--%>
         </section>
 
         <!-- /.box -->
@@ -262,12 +275,12 @@
                         <div class="control-group" style="display: none;">
                             <label class="control-label">ID<span class="required">*</span></label>
                             <div class="controls">
-                                <input id="update_blogid" type="text" name="name" data-required="1" />
+                                <input id="update_userid" type="text" name="name" data-required="1" />
                             </div>
                         </div>
 
                         <div class="control-group">
-                            <label class="control-label">用户名<span class="required">*</span></label>
+                            <label class="control-label">用户名</label>
                             <div class="controls">
                                 <input id="update_username" type="text" name="name" data-required="1" />
                             </div>
@@ -276,14 +289,14 @@
                         <div class="control-group">
                             <label class="control-label">联系方式</label>
                             <div class="controls">
-                                <input id="update_recievername" type="text" name="name" data-required="1" />
+                                <input id="update_phone" type="text" name="name" data-required="1" />
                             </div>
                         </div>
 
                         <div class="control-group">
-                            <label class="control-label">公司<span class="required">*</span></label>
+                            <label class="control-label">公司</label>
                             <div class="controls">
-                                <input id="update_sendcontent" type="text" name="name" data-required="1" />
+                                <input id="update_company" type="text" name="name" data-required="1" />
                             </div>
                         </div>
 
@@ -298,7 +311,7 @@
     </div>
 </div>
 
-<%--删除弹出层--%>
+<!--删除弹出层-->
 <div class="modal fade" id="delete" style="display:none;" data-backdrop="false">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -308,9 +321,14 @@
             <div class="modal-body">
                 <form action="#" id="delform" class="form-horizontal">
                     <fieldset>
-                            确定删除信息？
+                        <div class="control-group" style="display: none;">
+                            <div class="controls">
+                                <input id="del_userid" type="text" name="name" data-required="1" />
+                            </div>
+                        </div>
+                        确定删除信息？
                         <div class="form-actions">
-                            <button type="submit" class="btn btn-primary" onclick="deluser();return false;">删除</button>
+                            <button type="submit" class="btn btn-primary" onclick="deleteuser();return false;">删除</button>
                             <button id="delCancel" type="button" class="btn" onclick="del_cancel();">取消</button>
                         </div>
                     </fieldset>
@@ -319,7 +337,6 @@
         </div>
     </div>
 </div>
-
 
 <footer class="main-footer">
     <div class="pull-right hidden-xs">
@@ -540,7 +557,7 @@
     var selectedTr = null;
     var oTable = null;
     /*datatable插件赋值及属性设置*/
-    function showBlog() {
+    function showUser() {
         $.ajax({
             type: "post",
             url: "<%=basePath%>RequireUserController/ShowAllUser",
@@ -566,10 +583,12 @@
                         {data: 'time'},
                         {
                             "render": function (data, type, row) {
-                                alert(row.id);
                                 var id= '"' + row.id + '"';
-                                var html = "<a href='javascript:void(0);'  onclick='edit("+ id + ")' class='up btn btn-default btn-xs'><i class='fa fa-arrow-up'></i> 编辑</a>"
-                                html += "<a href='javascript:void(0);'   onclick='delete("+ id + ")'  class='down btn btn-default btn-xs'><i class='fa fa-arrow-down'></i> 删除</a>"
+                                var username = '"'+row.username+'"';
+                                var phone = '"'+row.phone+'"';
+                                var company = '"' +row.company+'"';
+                                var html = "<a href='javascript:void(0);'  onclick='edit(" + id + ","+username+","+phone+","+company+")' class='up btn btn-default btn-xs'><i class='fa fa-arrow-up'></i> 编辑</a>";
+                                html += "<a href='javascript:void(0);'   onclick='showdel("+ id + ")' class='down btn btn-default btn-xs'><i class='fa fa-arrow-down'></i> 删除</a>"
                                 return html;
                             }
                         }
@@ -622,6 +641,14 @@
     }
 
     /*获取选中行信息*/
+    function edit(id ,username,phone,company){
+        $("#update").modal("show");
+        document.getElementById("update_userid").value=id;
+        document.getElementById("update_username").value=username;
+        document.getElementById("update_phone").value=phone;
+        document.getElementById("update_company").value=company;
+        }
+
     function update(){
         if (selectedTr != null) {
             $("#update").modal("show");
@@ -637,11 +664,32 @@
         selectedTr = null;
     }
 
-    function deleted(){
+    function showdel(id){
         $("#delete").modal("show");
+        document.getElementById("del_userid").value=id;
+    };
+
+    /*操作删除*/
+    function deleteuser(){
+        var delid = document.getElementById("del_userid").value;
+        $.ajax({
+            type: "POST",
+            url:"<%= basePath %>RequireUserController/DeleteUser",
+            cache:false ,
+            async:true,
+            data:{delid: delid},
+            success:function(data){
+                if (data == "OK") {
+                    alert("删除成功！")
+                    location.reload("require_user.jsp");
+                } else {
+                    alert(data);
+                }
+            }
+        });
     }
 
-    /*删除选中行*/
+    /*选中行删除*/
     function deluser(){
         if (selectedTr != null) {
             var delid = selectedTr.cells[1].innerHTML;
@@ -674,15 +722,14 @@
     /*修改选中行*/
     function updateblog(){
         var postData = {
-            id:document.getElementById("update_blogid").value,
+            id:document.getElementById("update_userid").value,
             username:document.getElementById("update_username").value,
-            recievername: document.getElementById("update_recievername").value,
-            sendcontent: document.getElementById("update_sendcontent").value,
-            picpath:document.getElementById("update_picpath").value, sendtype:document.getElementById("update_sendtype").value
+            phone: document.getElementById("update_phone").value,
+            company: document.getElementById("update_company").value
         };
         $.ajax({
             type:"POST",
-            url:"<%=basePath%>adminController/updateBlog",
+            url:"<%=basePath%>RequireUserController/UpdateUser",
             async:false,
             data: postData,
             success:function(data){

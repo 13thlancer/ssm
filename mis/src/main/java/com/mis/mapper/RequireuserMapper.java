@@ -15,7 +15,7 @@ public interface RequireuserMapper {
 
     int deleteByPrimaryKey(String id);
 
-    int insert(Requireuser record);
+    int insert(Requireuser user);
 
     String selectByPhone(String phone);
 
@@ -33,5 +33,5 @@ public interface RequireuserMapper {
 
     int updateByPrimaryKeySelective(Requireuser record);
 
-    int updateByPrimaryKey(Requireuser record);
+    int updateByPrimaryKey(Requireuser user);
 }
